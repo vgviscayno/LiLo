@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="LiLo_WpfApp.Views.TimesheetTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LiLo_WpfApp.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <local:DateTimeDefaultToNullStringConverter x:Key="DateTimeDefaultToNullStringConverter" />
+    </UserControl.Resources>
+    <StackPanel>
+        <StackPanel HorizontalAlignment="Center" Margin="0,10,0,10" Orientation="Horizontal">
+            <TextBox Width="140" Text="{Binding TimeLog}" />
+            <Button Content="Log In/Log Out" Margin="10,0,10,0" Command="{Binding LogCommand}"/>
+        </StackPanel>
+        <DataGrid Width="600" ItemsSource="{Binding TimesheetTable}"
+                  AutoGenerateColumns="False"
+                  CanUserReorderColumns="False"
+                  CanUserResizeColumns="False" CanUserResizeRows="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Employee" Width="300" Binding="{Binding EmployeeName}" />
+                <DataGridTextColumn Header="Time In" Width="*" Binding="{Binding InTime}" />
+                <DataGridTextColumn Header="Time Out" Width="*" Binding="{Binding OutTime, Converter={StaticResource DateTimeDefaultToNullStringConverter}}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>
