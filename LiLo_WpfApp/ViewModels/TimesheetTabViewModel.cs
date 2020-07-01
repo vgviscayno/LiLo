@@ -2,7 +2,9 @@
 using LiLo_Library.Repositories;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace LiLo_WpfApp.ViewModels
@@ -37,24 +39,40 @@ namespace LiLo_WpfApp.ViewModels
                     EmployeeID = empLog.EmployeeID
                 };
 
+                if (DateTime.Now.ToString("tt") == "AM")
+                {
+                    LogData.CurrentShift = Shift.Morning;
+                }
+                else if (DateTime.Now.ToString("tt") == "PM")
+                {
+                    LogData.CurrentShift = Shift.Afternoon;
+                }
+
                 //if employee has logged in for the day, log out
                 if (TimesheetTable.Contains(LogData))
                 {
                     LogData = TimesheetTable[TimesheetTable.IndexOf(LogData)];
-                    
                     if(LogData.OutTime == default)
                     {
                         LogData.OutTime = DateTime.Now;
                         
                         _timesheetRepository.Update(LogData);
                         
-                        MessageBox.Show($"Goodbye {empLog.FullName}! You logged out at {LogData.OutTime:hh:mm tt}");
+                    }
+
+                    if (LogData.CurrentShift == Shift.Morning)
+                    {
+                        MessageBox.Show($"Goodbye {empLog.FullName}! You logged out at {LogData.OutTime:hh:mm tt} for your {Enum.GetName(typeof(Shift), Shift.Morning)} shift.");
+                    }
+                    else if (LogData.CurrentShift == Shift.Afternoon)
+                    {
+                        MessageBox.Show($"Goodbye {empLog.FullName}! You logged out at {LogData.OutTime:hh:mm tt} for your {Enum.GetName(typeof(Shift), Shift.Afternoon)} shift.");
                     }
                 }
                 //otherwise, log in
                 else
                 {
-                    LogData.Date = DateTime.Now;
+                    LogData.CurrentDate = DateTime.Now.Date;
                     LogData.InTime = DateTime.Now;
 
                     _timesheetRepository.Add(LogData);

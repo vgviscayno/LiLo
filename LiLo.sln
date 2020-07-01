@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiLo_Library", "LiLo_Librar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiLo_WpfApp", "LiLo_WpfApp\LiLo_WpfApp.csproj", "{5790E02F-0365-4290-94BC-9802A9355ED1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiLoManager_WpfApp", "LiLoManager_WpfApp\LiLoManager_WpfApp.csproj", "{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,26 @@ Global
 		{5790E02F-0365-4290-94BC-9802A9355ED1}.Release|x64.Build.0 = Release|Any CPU
 		{5790E02F-0365-4290-94BC-9802A9355ED1}.Release|x86.ActiveCfg = Release|Any CPU
 		{5790E02F-0365-4290-94BC-9802A9355ED1}.Release|x86.Build.0 = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|ARM.Build.0 = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|x64.Build.0 = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Debug|x86.Build.0 = Debug|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|ARM.ActiveCfg = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|ARM.Build.0 = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|ARM64.Build.0 = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|x64.ActiveCfg = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|x64.Build.0 = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|x86.ActiveCfg = Release|Any CPU
+		{64D0B72C-21DF-4C93-A6C7-FF58C2FC1F63}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
