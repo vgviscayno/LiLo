@@ -1,7 +1,7 @@
 ﻿using PropertyChanged;
 using System.ComponentModel;
 
-namespace LiLoManager_WpfApp.ViewModels
+namespace LiLo_WpfApp.ViewModels
 {
     /// <summary>
     /// Base class for view models
