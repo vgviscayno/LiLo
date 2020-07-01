@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Windows.Input;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LiLoManager_WpfApp.ViewModels
 {
-    /// <summary>
-    /// Command interface
-    /// </summary>
-    public class RelayCommand : ICommand
+    public class RelayCommand
     {
         public Action<object> _execute { get; set; }
         public Predicate<object> _canExecute { get; set; }
