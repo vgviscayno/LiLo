@@ -11,7 +11,7 @@ namespace LiLoManager_WpfApp
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new AttendanceViewModel();
+            this.DataContext = new TimesheetSummaryViewModel();
         }
     }
 }

@@ -46,9 +46,20 @@ namespace LiLo_Library.Repositories
             using (IDbConnection cnn = new SQLiteConnection(Helpers.LoadConnectionString()))
             {
                 DynamicParameters ff = new DynamicParameters();
-                var g = $"{DateTime.Now:yyyy-MM-dd}%";
+                var g = $"{DateTime.Now.AddDays(-2):yyyy-MM-dd}%";
                 ff.Add("@DateNow", g);
                 return cnn.Query<TimesheetModel>("select * from Timesheet where CurrentDate like @DateNow", ff).ToList();
+            }
+        }
+
+        public List<TimesheetModel> GetMonthlySummaryForEmployee(string YearAndMonth, EmployeeModel employee)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(Helpers.LoadConnectionString()))
+            {
+                DynamicParameters ff = new DynamicParameters();
+                ff.Add("@DateNow", $"{YearAndMonth}%");
+                ff.Add("@EmployeeID", $"{employee.EmployeeID}");
+                return cnn.Query<TimesheetModel>("select * from Timesheet where CurrentDate like @DateNow and EmployeeID = @EmployeeID", ff).ToList();
             }
         }
 

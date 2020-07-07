@@ -28,6 +28,15 @@ namespace LiLo_Library.Models
                 return er.GetById(EmployeeID).FullName;
             }
         }
+
+        public TimeSpan HoursRendered
+        {
+            get
+            {
+                var res = OutTime.Subtract(InTime);
+                return ((OutTime.Subtract(InTime)) <= new TimeSpan()) ? default : OutTime.Subtract(InTime);
+            }
+        }
         #endregion
          
         public bool Equals(TimesheetModel other)

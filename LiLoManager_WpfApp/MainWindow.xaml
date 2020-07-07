@@ -3,10 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:LiLoManager_WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        xmlns:tabs="clr-namespace:LiLoManager_WpfApp.Views"
+        Title="LiLo Manager" MinHeight="800" MinWidth="1200">
+    <StackPanel Margin="10">
+        <TabControl>
+            <TabItem Header="Monthly Timesheet">
+                <tabs:TimesheetSummaryView />
+            </TabItem>
+        </TabControl>
+    </StackPanel>
 </Window>
