@@ -14,6 +14,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,12 +52,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\ExpenseModel.cs" />
+    <Compile Include="Models\IncomeModel.cs" />
+    <Compile Include="Models\PayrollModel.cs" />
+    <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\TimesheetModel.cs" />
     <Compile Include="Models\TimesheetSummaryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\ExpenseRepository.cs" />
     <Compile Include="Repositories\Helpers.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\PayrollRepository.cs" />
+    <Compile Include="Repositories\PositionRepository.cs" />
     <Compile Include="Repositories\TimesheetRepository.cs" />
   </ItemGroup>
   <ItemGroup>

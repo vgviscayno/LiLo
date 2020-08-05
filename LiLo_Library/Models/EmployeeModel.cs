@@ -1,4 +1,6 @@
-﻿namespace LiLo_Library.Models
+﻿using LiLo_Library.Repositories;
+
+namespace LiLo_Library.Models
 {
     /// <summary>
     /// Model class for Employee Table
@@ -11,6 +13,9 @@
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        //to be implemented in DB
+        public int PositionID { get; set; }
         #endregion
 
         #region Derived Properties
@@ -20,6 +25,15 @@
         public string FullName
         {
             get => FirstName + " " + LastName;
+        }
+
+        public PositionModel Position
+        {
+            get
+            {
+                PositionRepository positionRepository = new PositionRepository();
+                return positionRepository.GetById(this.PositionID);
+            }
         }
         #endregion
     }

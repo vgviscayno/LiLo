@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using LiLoManager_WpfApp.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace LiLoManager_WpfApp.Views
 {
@@ -23,6 +12,7 @@ namespace LiLoManager_WpfApp.Views
         public TimesheetSummaryView()
         {
             InitializeComponent();
+            this.DataContext = new TimesheetSummaryViewModel();
         }
     }
 }
