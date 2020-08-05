@@ -1,0 +1,226 @@
+﻿<UserControl x:Class="LiLoManager_WpfApp.Views.TimesheetSummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LiLoManager_WpfApp.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Margin="10">
+        <TextBlock HorizontalAlignment="Center"
+                   FontSize="23"
+                   Text="Monthly Attendance" />
+        <Grid Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0"
+                   Target="{Binding ElementName=YearTB}"
+                   Content="Year" />
+
+            <TextBox Grid.Row="1" Grid.Column="0"
+                     Margin="0,10,10,10"
+                     x:Name="YearTB" 
+                     Text="{Binding Year}"/>
+
+            <Label Grid.Row="0" Grid.Column="1"
+                   Target="{Binding ElementName=MonthCB}"
+                   Content="Month" />
+
+            <ComboBox Grid.Row="1" Grid.Column="1"
+                      Margin="0,10,10,10"
+                      x:Name="MonthCB"
+                      ItemsSource="{Binding Months}"
+                      SelectedItem="{Binding SelectedMonth}"/>
+
+            <Button Grid.Column="2" Grid.RowSpan="2"
+                    Margin="0,10,0,10"
+                    Command="{Binding LoadCommand}"
+                    Content="Load" />
+        </Grid>
+
+        <TextBlock Text="Hours Rendered Per Day for the month of" 
+                   HorizontalAlignment="Center"/>
+        <TextBlock FontSize="18" 
+                   HorizontalAlignment="Center">
+            <Run Text="{Binding SelectedMonth}" />
+            <Run Text="{Binding Year}" />
+        </TextBlock>
+
+        <DataGrid AutoGenerateColumns="False"
+                  CanUserResizeRows="False" CanUserResizeColumns="False"
+                  CanUserReorderColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding TimesheetSummary}">
+            <DataGrid.Columns>
+                <DataGridTextColumn MinWidth="110"
+                                    Width="*"
+                                    Header="Employee"
+                                    Binding="{Binding Employee.FullName}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="1"
+                                    x:Name="Day"
+                                    Binding="{Binding Days[0], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="2" 
+                                    Binding="{Binding Days[1], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="3" 
+                                    Binding="{Binding Days[2], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="4" 
+                                    Binding="{Binding Days[3], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="5" 
+                                    Binding="{Binding Days[4], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="6" 
+                                    Binding="{Binding Days[5], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="7" 
+                                    Binding="{Binding Days[6], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="8" 
+                                    Binding="{Binding Days[7], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="9" 
+                                    Binding="{Binding Days[8], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="10" 
+                                    Binding="{Binding Days[9], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="11" 
+                                    Binding="{Binding Days[10], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="12" 
+                                    Binding="{Binding Days[11], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="13" 
+                                    Binding="{Binding Days[12], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="14" 
+                                    Binding="{Binding Days[13], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="15" 
+                                    Binding="{Binding Days[14], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="16" 
+                                    Binding="{Binding Days[15], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="17" 
+                                    Binding="{Binding Days[16], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="18" 
+                                    Binding="{Binding Days[17], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="19" 
+                                    Binding="{Binding Days[18], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="20" 
+                                    Binding="{Binding Days[19], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="21" 
+                                    Binding="{Binding Days[20], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="22" 
+                                    Binding="{Binding Days[21], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="23" 
+                                    Binding="{Binding Days[22], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="24" 
+                                    Binding="{Binding Days[23], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="25" 
+                                    Binding="{Binding Days[24], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="26" 
+                                    Binding="{Binding Days[25], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="27" 
+                                    Binding="{Binding Days[26], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="28" 
+                                    Binding="{Binding Days[27], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="29" 
+                                    Binding="{Binding Days[28], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="30" 
+                                    Binding="{Binding Days[29], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+                <DataGridTextColumn MinWidth="40" 
+                                    Header="31" 
+                                    Binding="{Binding Days[30], 
+                                              StringFormat=hh\\:mm, 
+                                              TargetNullValue=' --- '}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>

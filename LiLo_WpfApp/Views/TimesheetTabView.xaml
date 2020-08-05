@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <local:DateTimeDefaultToNullStringConverter x:Key="DateTimeDefaultToNullStringConverter" />
+        <local:ShiftNameConverter x:Key="ShiftNameConverter" />
     </UserControl.Resources>
     <StackPanel>
         <StackPanel HorizontalAlignment="Center" Margin="0,10,0,10" Orientation="Horizontal">
@@ -20,9 +21,12 @@
                   CanUserResizeColumns="False" CanUserResizeRows="False"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Employee" Width="300" Binding="{Binding EmployeeName}" />
-                <DataGridTextColumn Header="Time In" Width="*" Binding="{Binding InTime}" />
-                <DataGridTextColumn Header="Time Out" Width="*" Binding="{Binding OutTime, Converter={StaticResource DateTimeDefaultToNullStringConverter}}" />
+                <DataGridTextColumn Header="Employee" Width="150" Binding="{Binding EmployeeName}" />
+                <DataGridTextColumn Header="Shift" Width="*" Binding="{Binding CurrentShift, 
+                    Converter={StaticResource ShiftNameConverter}}" />
+                <DataGridTextColumn Header="Time In" Width="2*" Binding="{Binding InTime}" />
+                <DataGridTextColumn Header="Time Out" Width="2*" Binding="{Binding OutTime, 
+                    Converter={StaticResource DateTimeDefaultToNullStringConverter}}" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

@@ -1,0 +1,209 @@
+﻿<Window x:Class="LiLoManager_WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:LiLoManager_WpfApp"
+        mc:Ignorable="d"
+        xmlns:tabs="clr-namespace:LiLoManager_WpfApp.Views"
+        Title="LiLo Manager" MinHeight="800" MinWidth="1200">
+    <ScrollViewer>
+    <StackPanel Margin="10">
+        <TabControl>
+            <TabItem Header="Monthly Timesheet">
+                <tabs:TimesheetSummaryView />
+            </TabItem>
+            <TabItem Header="Payroll">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="23"
+                               Text="Payroll" />
+
+                    <TabControl>
+                        <TabItem Header="Create">
+                            <StackPanel>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+                                    <StackPanel Grid.Column="0"
+                                    Background="GhostWhite"
+                                    Margin="5">
+                                        <Label Content="_Employee:"
+                                   Target="{Binding ElementName=CBEmployee}"/>
+                                        <ComboBox HorizontalAlignment="Left" Width="200"
+                                      ItemsSource="{Binding EmployeesList}"
+                                      DisplayMemberPath="FullName"
+                                      SelectedItem="{Binding SelectedEmployee}"
+                                      x:Name="CBEmployee"/>
+                                        <Label Content="Position: " />
+                                        <TextBlock Text="{Binding SelectedEmployee.Position.PositionName}"/>
+                                        <Label Content="Daily Rate (Php): " />
+                                        <TextBlock Text="{Binding SelectedEmployee.Position.DailyRate}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1"
+                                    Background="GhostWhite"
+                                    Margin="5">
+                                        <Label Content="_Start Date:" />
+                                        <DatePicker HorizontalAlignment="Left"
+                                                    Width="200" 
+                                                    SelectedDate="{Binding SelectedStartDate}"
+                                                    DisplayDateStart="{Binding MinDate}"
+                                                    DisplayDateEnd="{Binding MaxDate}"/>
+                                        <Label Content="_End Date:" />
+                                        <DatePicker HorizontalAlignment="Left"
+                                                    Width="200"
+                                                    SelectedDate="{Binding SelectedEndDate}"
+                                                    DisplayDateStart="{Binding MinDate}"
+                                                    DisplayDateEnd="{Binding MaxDate}"/>
+                                        <Label Content="Days Between Dates: " />
+                                        <TextBlock Text="{Binding DatesDifference.Days}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="2" 
+                                    Background="GhostWhite"
+                                    Margin="5">
+                                        <Label Content="Number of Days Worked: " />
+                                        <TextBlock Text="{Binding NumberOfDaysWorked}" />
+                                        <Label Content="Gross Salary (Php): " />
+                                        <TextBlock Text="{Binding GrossSalary}" />
+                                        <Label Content="Positional Allowance (Php): " 
+                                   Target="{Binding ElementName=PositionalAllowance}" />
+                                        <TextBlock Text="{Binding SelectedEmployee.Position.PositionalAllowance}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <Label Content="Expense(s):" />
+                                            <DataGrid Margin="5"
+                                                      x:Name="Expenses_DG"
+                                                      HorizontalAlignment="Left"
+                                                      AutoGenerateColumns="False"
+                                                      CanUserAddRows="True"
+                                                      CanUserResizeRows="False"
+                                                      CanUserResizeColumns="False"
+                                                      ItemsSource="{Binding ExpensesList}"
+                                                      SelectionMode="Single"
+                                                      SelectedItem="{Binding SelectedExpense}">
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="Name"
+                                                                        Width="200"
+                                                                        Binding="{Binding Name}"/>
+                                                        <!--unfinished combobox for expense-->
+                                                    <DataGridTextColumn Header="Remarks"
+                                                    Width="*"
+                                                    Binding="{Binding Remarks}"/>
+                                                    <DataGridTextColumn Header="Amount (Php)"
+                                                    Width="100"
+                                                    Binding="{Binding Amount, StringFormat=N2}"/>
+                                                    <DataGridTemplateColumn Header="Delete"
+                                                            Width="100">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteExpenseCommand}">
+                                                                    Delete Expense
+                                                                </Button>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                            <Label Content="Income:" />
+                                            <DataGrid Margin="5"
+                                                      x:Name="Income_DG"
+                                                      HorizontalAlignment="Left"
+                                                      AutoGenerateColumns="False"
+                                                      CanUserAddRows="True"
+                                                      CanUserResizeRows="False"
+                                                      CanUserResizeColumns="False"
+                                                      ItemsSource="{Binding IncomeList}"
+                                                      SelectionMode="Single"
+                                                      SelectedItem="{Binding SelectedIncome}">
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="Name"
+                                                    Width="200"
+                                                    Binding="{Binding Name}"/>
+                                                    <DataGridTextColumn Header="Remarks"
+                                                    Width="*"
+                                                    Binding="{Binding Remarks}"/>
+                                                    <DataGridTextColumn Header="Amount (Php)"
+                                                    Width="100"
+                                                    Binding="{Binding Amount, StringFormat=N2}"/>
+                                                    <DataGridTemplateColumn Header="Delete"
+                                                            Width="100">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.DeleteIncomeCommand}">
+                                                                    Delete Income
+                                                                </Button>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1"
+                                                    Margin="5"
+                                                    Background="GhostWhite">
+                                            <Button Width="200" 
+                                                    Content="Calculate Total Expense"
+                                                    Command="{Binding CalculateExpensesCommand}"/>
+                                            <Label Content="Total Expenses (Php):" />
+                                            <TextBlock Text="{Binding TotalExpenses}" />
+
+                                            <Button Width="200" 
+                                                    Content="Calculate Total Income"
+                                                    Command="{Binding CalculateIncomeCommand}"/>
+                                            <Label Content="Total Income (Php):" />
+                                            <TextBlock Text="{Binding TotalIncome}" />
+
+                                            <Button Width="200"
+                                                    Content="Calculate Net Salary"
+                                                    Command="{Binding CalculateNetSalaryCommand}" />
+                                            <Label Content="Net Salary (Php): " Target="{Binding ElementName=NetSalary_TB}" />
+                                            <TextBlock x:Name="NetSalary_TB" Text="{Binding NetSalary}" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0"
+                                        Margin="5">
+                                            <Button Content="Save to Database"
+                                                    Command="{Binding SavePayrollCommand}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1"
+                                        Margin="5">
+                                            <Button Content="Export to PDF" 
+                                                    Command="{Binding ExportToPDFCommand}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                    </TabControl>
+                    
+                    
+                    
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
+    </ScrollViewer>
+</Window>
